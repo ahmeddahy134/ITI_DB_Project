@@ -1,3 +1,4 @@
+use Event_Ticketing_System 
 ----------- Insert Customer ------------
 INSERT INTO Customer (CustomerId, Name, Email, Address, DateOfBirth)
 VALUES 
@@ -55,7 +56,7 @@ values
 (2, 'Magic Tours', 'info@magictours.com'),
 (3, 'Pizza Hut Egypt', 'marketing@pizzahut.eg'),
 (4, 'X-Advert Agency', 'hello@xadvert.com'),
-(5, 'ManCity Club Events', 'ManCity@events.com');
+(5, 'ManCity Club Events', 'ManCity@events.com'),
 (6, 'Cairo Opera House', 'info@opera.eg'),
 (7, ' Khaldon Egypt', 'marketing@Khaldon.eg'),
 (8, 'TechLink Expo', 'events@techlink.com'),
@@ -85,10 +86,21 @@ values
 ------------------- Insert Event -------------------
 
 insert into event (EventId, Name, Description, Category, StartDate_Time, EndDate_Time, Status, VenueId, OrganizerId)
-values (6, 'tech summit 2025', 'latest tech innovations and startups', 'conference', '2025-10-05 10:00:00', '2025-10-05 17:00:00', 'upcoming', 3, 8);
-values (7, 'amr diab live', 'concert by amr diab in cairo stadium', 'concert', '2025-09-15 19:00:00', '2025-09-15 22:30:00', 'upcoming', 1, 7);
-values (10, 'international auto expo', 'largest car exhibition in the middle east', 'conference', '2025-11-01 10:00:00', '2025-11-01 18:00:00', 'upcoming', 1, 1);
-values (11, 'electro music fest', 'a full day of live edm and dj sets', 'concert', '2025-11-15 16:00:00', '2025-11-15 23:00:00', 'upcoming', 3, 8);
+values 
+(6, 'tech summit 2025', 'latest tech innovations and startups', 'conference', '2025-10-05 10:00:00', '2025-10-05 17:00:00', 'upcoming', 3, 8),
+(7, 'amr diab live', 'concert by amr diab in cairo stadium', 'concert', '2025-09-15 19:00:00', '2025-09-15 22:30:00', 'upcoming', 1, 7),
+(10, 'international auto expo', 'largest car exhibition in the middle east', 'conference', '2025-11-01 10:00:00', '2025-11-01 18:00:00', 'upcoming', 1, 1),
+(11, 'electro music fest', 'a full day of live edm and dj sets', 'concert', '2025-11-15 16:00:00', '2025-11-15 23:00:00', 'upcoming', 3, 8),
+(12, 'Cairo Food Festival', 'Taste cuisines from around the world', 'other', '2025-08-10 12:00:00', '2025-08-10 22:00:00', 'upcoming', 3, 3),
+(13, 'Startup Launch Day', '10 Egyptian startups showcase their MVPs', 'conference', '2025-09-20 10:00:00', '2025-09-20 16:00:00', 'upcoming', 3, 8),
+(14, 'Summer Theatre Gala', 'A night of classic Egyptian theatre', 'theater', '2025-08-25 19:30:00', '2025-08-25 22:00:00', 'upcoming', 2, 6),
+(15, 'Egypt Sports Day', 'Various sports competitions and fan activities', 'sports', '2025-10-01 09:00:00', '2025-10-01 18:00:00', 'upcoming', 1, 5),
+(16, 'Luxury Auto Night', 'Showcase of top-tier cars in Egypt', 'conference', '2025-12-05 18:00:00', '2025-12-05 22:00:00', 'upcoming', 1, 1),
+(17, 'Anime & Comic Con Egypt', 'Cosplay, anime screenings, and panels', 'other', '2025-11-10 10:00:00', '2025-11-10 20:00:00', 'upcoming', 3, 7),
+(18, 'Zamalek vs Ahly Match', 'Top Egyptian Premier League showdown', 'sports', '2025-10-15 19:00:00', '2025-10-15 21:00:00', 'upcoming', 1, 5),
+(19, 'Red Sea Jazz Festival', 'Live jazz bands on the coast', 'concert', '2025-09-01 18:00:00', '2025-09-01 23:00:00', 'upcoming', 4, 9),
+(20, 'Green Future Expo', 'Exhibition of sustainable and green tech', 'conference', '2025-12-01 09:00:00', '2025-12-01 17:00:00', 'upcoming', 3, 8),
+(21, 'Opera Classics Night', 'Performances of classic operas', 'theater', '2025-09-28 20:00:00', '2025-09-28 22:00:00', 'upcoming', 2, 6);
 
 
 ------------------- Insert Ticket -------------------
@@ -122,7 +134,6 @@ insert into Ticket (TicketId, Section, Row, SeatNumber, TicketType, Price, Purch
 (29, 'K', '5', 31, 'VIP', 1300, '2025-07-01 17:20:00', 'active', 11, 11),
 (30, 'K', '5', 32, 'VIP', 1300, '2025-07-01 17:22:00', 'active', 11, 12);
 
-					------------------------------------------------------------------------------------------------------------------------
 
 ----------- Update Customer -------------
 update Customer 
@@ -288,16 +299,13 @@ where SpecializationArea = 'sports';
 ------------------- Delete Venue -------------------
 delete from Venue
 where Name = 'borg el arab stadium';
-
-delete from venue
-where Capacity < 4000;
-
 ------------------- Delete Event----------------
-delete from Event
-where Name = 'international auto expo';
+delete from Ticket where EventId IN (
+  select EventId from Event where Name = 'international auto expo' OR EventId = 11
+);
 
-delete from Event
-where EventId = 11;
+delete from Event where Name = 'international auto expo';
+delete from Event where EventId = 11;
 
 ------------------- Delete Ticket -------------------
 delete from Ticket where TicketId = 3;
