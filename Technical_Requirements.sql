@@ -197,3 +197,13 @@ from (
 ) as category_stats
 where category_stats.avg_price > 500
 order by category_stats.avg_price desc;
+
+--===Indexes
+-- Index on event_name, category, event_date 
+create index INDEX_EVENT on Event(StartDate_Time, VenueId);
+-- Index on customer_id, event_id 
+create index INDEX_Customer_Event on Ticket(CustomerId, EventId);
+-- Index on purchase_date, ticket_price 
+create index INDEX_Ticket on Ticket(PurchaseDateTime,Price);
+-- Index on venue_id, event_date 
+create index INDEX_Event_Date on Event(VenueId,StartDate_Time);
