@@ -87,10 +87,10 @@ values
 
 insert into event (EventId, Name, Description, Category, StartDate_Time, EndDate_Time, Status, VenueId, OrganizerId)
 values 
-(6, 'tech summit 2025', 'latest tech innovations and startups', 'conference', '2025-10-05 10:00:00', '2025-10-05 17:00:00', 'upcoming', 3, 8),
+(6, 'tech summit 2025', 'latest tech innovations and startups', 'conference', '2025-10-05 10:00:00', '2025-10-05 17:00:00', 'upcoming', 1, 8),
 (7, 'amr diab live', 'concert by amr diab in cairo stadium', 'concert', '2025-09-15 19:00:00', '2025-09-15 22:30:00', 'upcoming', 1, 7),
 (10, 'international auto expo', 'largest car exhibition in the middle east', 'conference', '2025-11-01 10:00:00', '2025-11-01 18:00:00', 'upcoming', 1, 1),
-(11, 'electro music fest', 'a full day of live edm and dj sets', 'concert', '2025-11-15 16:00:00', '2025-11-15 23:00:00', 'upcoming', 3, 8),
+(11, 'electro music fest', 'a full day of live edm and dj sets', 'concert', '2025-11-15 16:00:00', '2025-11-15 23:00:00', 'upcoming', 1, 8),
 (12, 'Cairo Food Festival', 'Taste cuisines from around the world', 'other', '2025-08-10 12:00:00', '2025-08-10 22:00:00', 'upcoming', 3, 3),
 (13, 'Startup Launch Day', '10 Egyptian startups showcase their MVPs', 'conference', '2025-09-20 10:00:00', '2025-09-20 16:00:00', 'upcoming', 3, 8),
 (14, 'Summer Theatre Gala', 'A night of classic Egyptian theatre', 'theater', '2025-08-25 19:30:00', '2025-08-25 22:00:00', 'upcoming', 2, 6),
@@ -101,8 +101,15 @@ values
 (19, 'Red Sea Jazz Festival', 'Live jazz bands on the coast', 'concert', '2025-09-01 18:00:00', '2025-09-01 23:00:00', 'upcoming', 4, 9),
 (20, 'Green Future Expo', 'Exhibition of sustainable and green tech', 'conference', '2025-12-01 09:00:00', '2025-12-01 17:00:00', 'upcoming', 3, 8),
 (21, 'Opera Classics Night', 'Performances of classic operas', 'theater', '2025-09-28 20:00:00', '2025-09-28 22:00:00', 'upcoming', 2, 6);
-
-
+insert into event (EventId, Name, Description, Category, StartDate_Time, EndDate_Time, Status, VenueId, OrganizerId)
+values 
+(23, 'Tech Week Egypt', 'Ongoing technology conference', 'conference', '2025-03-15 09:00:00', '2025-03-20 18:00:00', 'ongoing', 3, 8),
+(24, 'Spring Music Festival', 'Daily concerts in various venues', 'concert', '2025-04-01 18:00:00', '2025-04-15 23:00:00', 'ongoing', 1, 7),
+(25, '2024 Pyramids Marathon', 'Annual running event around the pyramids', 'sports', '2024-03-10 06:00:00', '2024-03-10 12:00:00', 'completed', 1, 5),
+(26, 'Winter Film Festival', 'Showcase of Egyptian cinema', 'other', '2024-12-01 12:00:00', '2024-12-10 22:00:00', 'completed', 2, 6),
+(27, 'AI Conference 2024', 'Artificial intelligence summit', 'conference', '2024-11-15 09:00:00', '2024-11-17 17:00:00', 'completed', 3, 8),
+(28, 'National Day Concert', 'Celebration of Egyptian culture', 'concert', '2024-07-23 20:00:00', '2024-07-23 23:30:00', 'completed', 1, 7),
+(30, 'Blockchain Summit', 'Event cancelled by organizers', 'conference', '2025-06-10 09:00:00', '2025-06-12 17:00:00', 'cancelled', 3, 8);
 ------------------- Insert Ticket -------------------
 insert into Ticket (TicketId, Section, Row, SeatNumber, TicketType, Price, PurchaseDateTime, Status, EventId, CustomerId) values
 (1, 'A', '1', 1, 'VIP', 1000, '2025-07-01 14:00:00', 'active', 6, 1),
